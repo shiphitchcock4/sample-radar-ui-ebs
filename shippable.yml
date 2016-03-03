@@ -8,12 +8,7 @@ node_js:
 env:
   global:
    - foo="bar"
-    
-    # encrypted variable for AWS_ACCESS_KEY_ID
-   # - secure: c5Th/DpT5P9kHJUBQUtCOwbf/7FdR/2eoV3ltYmBqjsExKLoJBVlhCJ8tu+50iWcUHcMeaMIy53Rz6+xEOW3ia59hykldo88HYxhEWjHPIVyvkBmHjIUMpJEhvY/HOE29MsJAs7AnKUl5IvNOYwtB9yNJzdW+n1kyj2L1X1azsaCUk7qZcEwxtzkGeyj5KBrPWgiY86Lr3f+UtIrpTWIkhih3vPKSkhWlh3eSQwj3p0IOejAUYFJVLXlJv2ZS0VonF0jdvB6ELmUPe2mArxWiHOQE18DfaFecnNch18u6e3u5omlqlwv3xa6oB8iFF5YD/z8KzsEBPUejETHqEd2Hw==    #- secure: DJVb1fX1kJID5oymfAbEY+hxwEiHOvoDGncAjiO+7YRS5Tph5o7PLJRjAUJRPSlON8Nsd9tmhjKVmxE1NGZT8H/ZOtfGUS08LsfoFnMHooPpAJW9xTUqSljmVpXsMHG7jByMUp/KX68LbqYnsug/E1JmxjB/NugGuNihoWbiDOqNo6OItavunGeerUnl/u7Sb8nbyZNWTaTRVDyjeKYPDOH5uiMdj2NR0r4v3kQfYG7XyTG96qZCW/BYtGmyLU4LoXqaElf8AZIK7OM0wxpDmQezocnNArTHcbqmo02Dgwc2BXxR/1eHfnJJ3i4vu7x39fsFZa/B1m/AqZzhEyO6NQ==
-    # encrypted variable for AWS_SECRET_ACCESS_KEY
-    #- secure: E5PrBWGxvKNGFHOF/VEyJYzRgSXaM/sOcXuME+9uGJjfzHsKmbiVvdmZlFC3Hne+mNg3xlaGSeto2NzbmHYRjl7eZlCilpRxIL0s68irbwOQdEsWKFHhHmiajs/6heDsU2aGngwh4JoWngFszYIufUSFh3EzqfACEotUxl+t5Lp4IPm14iCWgSIj/dcC28BA228UmzGPfxmrYsPfhoZt+ONVRtQPdgbd0qsUZbcaAk21+0KBDGTxfa1llX9UVdYj1gB2LQN8mcogyE1Tajyxyt2G2fpA//Vk7NDr3TR/SvQgLO6LsAhQ+413mL77l/EhgjZss2wNdR9uaCQSBDaaGg==
-     
+
 
 build:
   pre_ci_boot:
@@ -27,8 +22,4 @@ build:
       - export EBS_VERSION=shippabledocker.ebstest.$EBS_IMAGE_TAG
       - docker build -t=shippabledocker/ebstest:$EBS_IMAGE_TAG . 
 
-integrations:
-  hub:
-    - integrationName: "ship-docker"
-      type: docker
-     
+
