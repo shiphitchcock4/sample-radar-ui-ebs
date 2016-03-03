@@ -9,8 +9,5 @@
     "ContainerPort": "3000"
   }
 ],
-"Authentication": {
-  "Bucket": "elasticbeanstalk-us-west-2-283203501536",
-  "Key": "<DOCKER_CONFIG>"
-}
+
 }
