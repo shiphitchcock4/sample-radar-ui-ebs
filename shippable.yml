@@ -15,27 +15,19 @@ env:
      
 
 build:
-  pre_ci:
-    #- docker build -t $REGISTRY_ACCOUNT/$AWS_EB_APPLICATION:latest .
-    - docker build --rm -t=480971114143.dkr.ecr.us-east-1.amazonaws.com/node-app .
-    - node --version
-    - SUDO=$(which sudo) && $SUDO pip install awscli
   pre_ci_boot:
-    image_name: 480971114143.dkr.ecr.us-east-1.amazonaws.com/node-app
-    image_tag: latest
-    pull: false
-    options: --privileged=true
-  ci:
-    - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
-    - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
-    - aws configure set region $AWS_REGION
-    - npm install
-  post_ci:
-   # - docker tag -f $REGISTRY_ACCOUNT/$AWS_EB_APPLICATION:latest $REGISTRY_ACCOUNT/$AWS_EB_APPLICATION:$BRANCH.$BUILD_NUMBER
-    - docker push 480971114143.dkr.ecr.us-east-1.amazonaws.com/node-app
+    image_name: drydock/u14nod
+    image_tag: prod
+    pull: true
     
+  ci:
+      - export EBS_IMAGE_TAG=$BRANCH.$BUILD_NUMBER
+      - export EBS_IMAGE_NAME=shippabledocker\\/ebstest:$EBS_IMAGE_TAG
+      - export EBS_VERSION=shippabledocker.ebstest.$EBS_IMAGE_TAG
+      - docker build -t=shippabledocker/ebstest:$EBS_IMAGE_TAG 
+
 integrations:
   hub:
-    - integrationName: "ship-ecr"
-      type: ecr
+    - integrationName: "ship-docker"
+      type: docker
      
