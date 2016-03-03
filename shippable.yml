@@ -21,7 +21,7 @@ build:
     - node --version
     - SUDO=$(which sudo) && $SUDO pip install awscli
   pre_ci_boot:
-    image_name: 480971114143.dkr.ecr.us-east-1.amazonaws.com/node-app:latest .
+    image_name: 480971114143.dkr.ecr.us-east-1.amazonaws.com/node-app
     image_tag: latest
     pull: false
     options: --privileged=true
